@@ -1004,18 +1004,25 @@ solveButton.setOnAction(event->
 {   
     System.out.println("Solve pressed");
 //Lets just run 15 times
-
-    while(isDone(0,0,masterArrayList)){
-    
-    for(int i=0; i<9; i++){
-        for(int j=0; j<9; j++){
-        //checkCell(masterArrayList,i,j,gridArrayList);
-        checkHiddenSinglesTest(masterArrayList,i,j,gridArrayList,"test",0,whichGridList);
-        checkCell(masterArrayList,i,j,gridArrayList);
+do{
+    for(int fun=0; fun<15; fun++){
+        for(int i=0; i<9; i++){
+            for(int j=0; j<9; j++){
+            checkCell(masterArrayList,i,j,gridArrayList);
+            //checkHiddenSingles(masterArrayList,i,j,gridArrayList,"test",0,whichGridList);
+            }
+        }
+    }
+     for(int fun=0; fun<3; fun++){         
+        for(int p=0; p<9; p++){
+            for(int q=0; q<9; q++){
+            //checkCell(masterArrayList,i,j,gridArrayList);
+            checkHiddenSinglesTest(masterArrayList,p,q,gridArrayList,"test",0,whichGridList);        
         }
     } 
     //checkCell(masterArrayList,3,2,4);
     }
+} while(isDone(0,0,masterArrayList));
 //checkHiddenSinglesTest(masterArrayList,1,0,gridArrayList,"test",0,whichGridList);
 //setLabels(labelArrayList,masterArrayList);
 //checkHiddenSinglesTest(masterArrayList,0,8,gridArrayList,"test",0,whichGridList);
@@ -2320,14 +2327,15 @@ public void printPossibleArray(ArrayList<ArrayList<ArrayList<String>>> list){
 }
 
 public boolean isDone(int row, int col,ArrayList<ArrayList<ArrayList<String>>> list){
-    boolean bool = false;
+    boolean bool = true;
     
     for(int i = 0; i<9; i++){
         for(int j=0; j<9; j++){
             if(list.get(i).get(j).get(0) == "_"){
-                break;
+                i = 9;
+                j = 9;
             }else if(i==8 && j==8){
-            bool = true;}
+            bool = false;}
         }//inner for
     }//outer for
 return bool;
