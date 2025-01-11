@@ -1004,19 +1004,28 @@ solveButton.setOnAction(event->
 {   
     System.out.println("Solve pressed");
 //Lets just run 15 times
-/*
-for(int fun=0; fun<15; fun++){
+
+    while(isDone(0,0,masterArrayList)){
     
     for(int i=0; i<9; i++){
         for(int j=0; j<9; j++){
         //checkCell(masterArrayList,i,j,gridArrayList);
-        checkHiddenSingles(masterArrayList,i,j,gridArrayList,"test",0,whichGridList);
+        checkHiddenSinglesTest(masterArrayList,i,j,gridArrayList,"test",0,whichGridList);
+        checkCell(masterArrayList,i,j,gridArrayList);
         }
     } 
     //checkCell(masterArrayList,3,2,4);
-}*/
-checkHiddenSingles(masterArrayList,0,0,gridArrayList,"test",0,whichGridList);
-printPossibleArray(masterArrayList);
+    }
+//checkHiddenSinglesTest(masterArrayList,1,0,gridArrayList,"test",0,whichGridList);
+//setLabels(labelArrayList,masterArrayList);
+//checkHiddenSinglesTest(masterArrayList,0,8,gridArrayList,"test",0,whichGridList);
+//setLabels(labelArrayList,masterArrayList);
+//checkHiddenSinglesTest(masterArrayList,3,8,gridArrayList,"test",0,whichGridList);
+//setLabels(labelArrayList,masterArrayList);
+//checkHiddenSinglesTest(masterArrayList,6,2,gridArrayList,"test",0,whichGridList);
+//setLabels(labelArrayList,masterArrayList);
+//checkHiddenSinglesTest(masterArrayList,6,8,gridArrayList,"test",0,whichGridList);
+//printPossibleArray(masterArrayList);
 setLabels(labelArrayList,masterArrayList);
 });
 //display event ahndler
@@ -1540,6 +1549,454 @@ public ArrayList<ArrayList<String>> createGridHiddenSingles(ArrayList<ArrayList<
    return gridList;
     }//end craat gridhiddne singles
 
+
+
+
+ArrayList<String> ArrayListHiddenSingles = new ArrayList<>();
+
+public ArrayList<String> createArrayListHiddenSingles(ArrayList<ArrayList<ArrayList<String>>> list, int x, int y,int grid){
+    ArrayList<String> HiddenSinglesAL = new ArrayList<>();
+    String possibleValues="";
+    System.out.println("createhiddensinglesAL");    
+    HiddenSinglesAL.clear();
+   //switch statement i know what grids we are looking for 
+   switch(grid){
+       case 1:// need to revist this and create the grid it neesd to be 3x3 not 9x9
+           //all should be added to gridlist same as case 1
+           //prolly dont have to use 3d array can ust 2d array
+           //need ot update my gridlist so it takes and handles the index of zero and just search it accordinly                   
+           if (checkValue(list,0,0).equals("_") && x == 0 && y == 0){
+                }else{
+               //trying to skip the underscore
+               //insert else statement so i can not add if above is true but add if it isnt 
+               for(int i=1; i<list.get(0).get(0).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,0,0,i));
+               System.out.println("index"+getPossibleValue(list,0,0,i));}//end for
+           };
+           if (checkValue(list,0,1).equals("_") && x == 0 && y == 1){
+                }else{
+               for(int i=1; i<list.get(0).get(1).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,0,1,i));}//end for               
+           };
+           if (checkValue(list,0,2).equals("_") && x == 0 && y == 2){
+                }else{
+               for(int i=1; i<list.get(0).get(2).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,0,2,i));}//end for
+           };
+           if (checkValue(list,1,0).equals("_") && x == 1 && y == 0){
+                }else{
+               for(int i=1; i<list.get(1).get(0).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,1,0,i));}//end for
+           };
+           if (checkValue(list,1,1).equals("_") && x == 1 && y == 1){
+                }else{
+               for(int i=1; i<list.get(1).get(1).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,1,1,i));}//end for
+           };
+           if (checkValue(list,1,2).equals("_") && x == 1 && y == 2){
+                }else{
+               for(int i=1; i<list.get(1).get(2).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,1,2,i));}//end for
+           };           
+           if (checkValue(list,2,0).equals("_") && x == 2 && y == 0){
+                }else{
+               for(int i=1; i<list.get(2).get(0).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,2,0,i));}//end for
+           };
+           if (checkValue(list,2,1).equals("_") && x == 2 && y == 1){
+                }else{
+               for(int i=1; i<list.get(2).get(1).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,2,1,i));}//end for
+           };
+           if (checkValue(list,2,2).equals("_") && x == 2 && y == 2){
+                }else{
+               for(int i=1; i<list.get(2).get(2).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,2,2,i));}//end for
+           };           
+           break;
+        case 2:
+           if (checkValue(list,0,3).equals("_")&& x == 0 && y == 3){
+                }else{
+               for(int i=1; i<list.get(0).get(3).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,0,3,i));}//end for
+           };
+           if (checkValue(list,0,4).equals("_")&& x == 0 && y == 4){
+                }else{
+               for(int i=1; i<list.get(0).get(4).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,0,4,i));}//end for
+           };
+           if (checkValue(list,0,5).equals("_")&& x == 0 && y == 5){
+                }else{
+               for(int i=1; i<list.get(0).get(5).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,0,5,i));}//end for
+           };
+           if (checkValue(list,1,3).equals("_")&& x == 1 && y == 3){
+                }else{
+               for(int i=1; i<list.get(1).get(3).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,1,3,i));}//end for
+           };
+           if (checkValue(list,1,4).equals("_")&& x == 1 && y == 4){
+                }else{
+               for(int i=1; i<list.get(1).get(4).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,1,4,i));}//end for
+           };
+           if (checkValue(list,1,5).equals("_")&& x == 1 && y == 5){
+                }else{
+               for(int i=1; i<list.get(1).get(5).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,1,5,i));}//end for
+           };           
+           if (checkValue(list,2,3).equals("_")&& x == 2 && y == 3){
+                }else{
+               for(int i=1; i<list.get(2).get(3).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,2,3,i));}//end for
+           };
+           if (checkValue(list,2,4).equals("_")&& x == 2 && y == 4){
+                }else{
+               for(int i=1; i<list.get(2).get(4).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,2,4,i));}//end for
+           };
+           if (checkValue(list,2,5).equals("_")&& x == 2 && y == 5){
+                }else{
+               for(int i=1; i<list.get(2).get(5).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,2,5,i));}//end for
+           };           
+           break;          
+       case 3:
+           if (checkValue(list,0,6).equals("_")&& x == 0 && y == 6){
+                }else{
+               for(int i=1; i<list.get(0).get(6).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,0,6,i));}//end for
+           };
+           if (checkValue(list,0,7).equals("_")&& x == 0 && y == 7){
+                }else{
+               for(int i=1; i<list.get(0).get(7).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,0,7,i));}//end for
+           };
+           if (checkValue(list,0,8).equals("_")&& x == 0 && y == 8){
+                }else{
+               for(int i=1; i<list.get(0).get(8).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,0,8,i));}//end for
+           };
+           if (checkValue(list,1,6).equals("_")&& x == 1 && y == 6){
+                }else{
+               for(int i=1; i<list.get(1).get(6).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,1,6,i));}//end for
+           };
+           if (checkValue(list,1,7).equals("_")&& x == 1 && y == 7){
+                }else{
+               for(int i=1; i<list.get(1).get(7).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,1,7,i));}//end for
+           };
+           if (checkValue(list,1,8).equals("_")&& x == 1 && y == 8){
+                }else{
+               for(int i=1; i<list.get(1).get(8).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,1,8,i));}//end for
+           };           
+           if (checkValue(list,2,6).equals("_")&& x == 2 && y == 6){
+                }else{
+               for(int i=1; i<list.get(2).get(6).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,2,6,i));}//end for
+           };
+           if (checkValue(list,2,7).equals("_")&& x == 2 && y == 7){
+                }else{
+               for(int i=1; i<list.get(2).get(7).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,2,7,i));}//end for
+           };
+           if (checkValue(list,2,8).equals("_")&& x == 2 && y == 8){
+                }else{
+               for(int i=1; i<list.get(2).get(8).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,2,8,i));}//end for
+           };           
+           break;
+       case 4:
+           if (checkValue(list,3,0).equals("_")&& x == 3 && y == 0){
+                }else{
+               for(int i=1; i<list.get(3).get(0).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,3,0,i));}//end for
+           };
+           if (checkValue(list,3,1).equals("_")&& x == 3 && y == 1){
+                }else{
+               for(int i=1; i<list.get(3).get(1).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,3,1,i));}//end for
+           };
+           if (checkValue(list,3,2).equals("_")&& x == 3 && y == 2){
+                }else{
+               for(int i=1; i<list.get(3).get(2).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,3,2,i));}//end for
+           };
+           if (checkValue(list,4,0).equals("_")&& x == 4 && y == 0){
+                }else{
+               for(int i=1; i<list.get(4).get(0).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,4,0,i));}//end for
+           };
+           if (checkValue(list,4,1).equals("_")&& x == 4 && y == 1){
+                }else{
+               for(int i=1; i<list.get(4).get(1).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,4,1,i));}//end for
+           };
+           if (checkValue(list,4,2).equals("_")&& x == 4 && y == 2){
+                }else{
+               for(int i=1; i<list.get(4).get(2).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,4,2,i));}//end for
+           };           
+           if (checkValue(list,5,0).equals("_")&& x == 5 && y == 0){
+                }else{
+               for(int i=1; i<list.get(5).get(0).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,5,0,i));}//end for
+           };
+           if (checkValue(list,5,1).equals("_")&& x == 5 && y == 1){
+                }else{
+               for(int i=1; i<list.get(5).get(1).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,5,1,i));}//end for
+           };
+           if (checkValue(list,5,2).equals("_")&& x == 5 && y == 2){
+                }else{
+               for(int i=1; i<list.get(5).get(2).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,5,2,i));}//end for
+           };           
+           break;
+       case 5:
+           if (checkValue(list,3,3).equals("_")&& x == 3 && y == 3){
+                }else{
+               for(int i=1; i<list.get(3).get(3).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,3,3,i));}//end for
+           };
+           if (checkValue(list,3,4).equals("_")&& x == 3 && y == 4){
+                }else{
+               for(int i=1; i<list.get(3).get(4).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,3,4,i));}//end for
+           };
+           if (checkValue(list,3,5).equals("_")&& x == 3 && y == 5){
+                }else{
+               for(int i=1; i<list.get(3).get(5).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,3,5,i));}//end for
+           };
+           if (checkValue(list,4,3).equals("_")&& x == 4 && y == 3){
+                }else{
+               for(int i=1; i<list.get(4).get(3).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,4,3,i));}//end for
+           };
+           if (checkValue(list,4,4).equals("_")&& x == 4 && y == 4){
+                }else{
+               for(int i=1; i<list.get(4).get(4).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,4,4,i));}//end for
+           };
+           if (checkValue(list,4,5).equals("_")&& x == 4 && y == 5){
+                }else{
+               for(int i=1; i<list.get(4).get(5).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,4,5,i));}//end for
+           };           
+           if (checkValue(list,5,3).equals("_")&& x == 5 && y == 3){
+                }else{
+               for(int i=1; i<list.get(5).get(3).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,5,3,i));}//end for
+           };
+           if (checkValue(list,5,4).equals("_")&& x == 5 && y == 4){
+                }else{
+               for(int i=1; i<list.get(5).get(4).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,5,4,i));}//end for
+           };
+           if (checkValue(list,5,5).equals("_")&& x == 5 && y == 5){
+                }else{
+               for(int i=1; i<list.get(5).get(5).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,5,5,i));}//end for
+           };           
+           break;
+       case 6:
+           if (checkValue(list,3,6).equals("_")&& x == 3 && y == 6){
+                }else{
+               for(int i=1; i<list.get(3).get(6).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,3,6,i));}//end for
+           };
+           if (checkValue(list,3,7).equals("_")&& x == 3 && y == 7){
+                }else{
+               for(int i=1; i<list.get(3).get(7).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,3,7,i));}//end for
+           };
+           if (checkValue(list,3,8).equals("_")&& x == 3 && y == 8){
+                }else{
+               for(int i=1; i<list.get(3).get(8).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,3,8,i));}//end for
+           };
+           if (checkValue(list,4,6).equals("_")&& x == 4 && y == 6){
+                }else{
+               for(int i=1; i<list.get(4).get(6).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,4,6,i));}//end for
+           };
+           if (checkValue(list,4,7).equals("_")&& x == 4 && y == 7){
+                }else{
+               for(int i=1; i<list.get(4).get(7).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,4,7,i));}//end for
+           };
+           if (checkValue(list,4,8).equals("_")&& x == 4 && y == 8){
+                }else{
+               for(int i=1; i<list.get(4).get(8).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,4,8,i));}//end for
+           };           
+           if (checkValue(list,5,6).equals("_")&& x == 5 && y == 6){
+                }else{
+               for(int i=1; i<list.get(5).get(6).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,5,6,i));}//end for
+           };
+           if (checkValue(list,5,7).equals("_")&& x == 5 && y == 7){
+                }else{
+               for(int i=1; i<list.get(5).get(7).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,5,2,i));}//end for
+           };
+           if (checkValue(list,5,8).equals("_")&& x == 5 && y == 8){
+                }else{
+               for(int i=1; i<list.get(5).get(8).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,5,8,i));}//end for
+           };           
+           break;
+       case 7:
+           if (checkValue(list,6,0).equals("_")&& x == 6 && y == 0){
+                }else{
+               for(int i=1; i<list.get(6).get(0).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,6,0,i));}//end for
+           };
+           if (checkValue(list,6,1).equals("_")&& x == 6 && y == 1){
+                }else{
+               for(int i=1; i<list.get(6).get(1).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,6,1,i));}//end for
+           };
+           if (checkValue(list,6,2).equals("_")&& x == 6 && y == 2){
+                }else{
+               for(int i=1; i<list.get(6).get(2).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,6,2,i));}//end for
+           };
+           if (checkValue(list,7,0).equals("_")&& x == 7 && y == 0){
+                }else{
+               for(int i=1; i<list.get(7).get(0).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,7,0,i));}//end for
+           };
+           if (checkValue(list,7,1).equals("_")&& x == 7 && y == 1){
+                }else{
+               for(int i=1; i<list.get(7).get(1).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,7,1,i));}//end for
+           };
+           if (checkValue(list,7,2).equals("_")&& x == 7 && y == 2){
+                }else{
+               for(int i=1; i<list.get(7).get(2).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,7,2,i));}//end for
+           };           
+           if (checkValue(list,8,0).equals("_")&& x == 8 && y == 0){
+                }else{
+               for(int i=1; i<list.get(8).get(0).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,8,0,i));}//end for
+           };
+           if (checkValue(list,8,1).equals("_")&& x == 8 && y == 1){
+                }else{
+               for(int i=1; i<list.get(8).get(1).size();i++){
+                 HiddenSinglesAL.add(getPossibleValue(list,8,1,i));}//end for
+           };
+           if (checkValue(list,8,2).equals("_")&& x == 8 && y == 2){
+                }else{
+               for(int i=1; i<list.get(8).get(2).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,8,2,i));}//end for
+           };           
+           break;
+       case 8:
+           if (checkValue(list,6,3).equals("_")&& x == 6 && y == 3){
+                }else{
+               for(int i=1; i<list.get(6).get(3).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,6,3,i));}//end for
+           };
+           if (checkValue(list,6,4).equals("_")&& x == 6 && y == 4){
+                }else{
+               for(int i=1; i<list.get(6).get(4).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,6,4,i));}//end for
+           };
+           if (checkValue(list,6,5).equals("_")&& x == 6 && y == 5){
+                }else{
+               for(int i=1; i<list.get(6).get(5).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,6,5,i));}//end for
+           };
+           if (checkValue(list,7,3).equals("_")&& x == 7 && y == 3){
+                }else{
+               for(int i=1; i<list.get(7).get(3).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,7,3,i));}//end for
+           };
+           if (checkValue(list,7,4).equals("_")&& x == 7 && y == 4){
+                }else{
+               for(int i=1; i<list.get(7).get(4).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,7,4,i));}//end for
+           };
+           if (checkValue(list,7,5).equals("_")&& x == 7 && y == 5){
+                }else{
+               for(int i=1; i<list.get(7).get(5).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,7,5,i));}//end for
+           };           
+           if (checkValue(list,8,3).equals("_")&& x == 8 && y == 3){
+                }else{
+               for(int i=1; i<list.get(8).get(3).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,8,3,i));}//end for
+           };
+           if (checkValue(list,8,4).equals("_")&& x == 8 && y == 4){
+                }else{
+               for(int i=1; i<list.get(8).get(4).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,8,4,i));}//end for
+           };
+           if (checkValue(list,8,5).equals("_")&& x == 8 && y == 5){
+                }else{
+               for(int i=1; i<list.get(8).get(5).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,8,5,i));}//end for
+           };           
+           break;
+       case 9://DONE WORK YOUR WAY UP
+           if (checkValue(list,6,6).equals("_")&& x == 6 && y == 6){
+                }else{
+               for(int i=1; i<list.get(6).get(6).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,6,6,i));}//end for
+           };
+           if (checkValue(list,6,7).equals("_")&& x == 6 && y == 7){
+                }else{
+               for(int i=1; i<list.get(6).get(7).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,6,7,i));}//end for
+           };
+           if (checkValue(list,6,8).equals("_")&& x == 6 && y == 8){
+                }else{
+               for(int i=1; i<list.get(6).get(8).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,6,8,i));}//end for
+           };
+           if (checkValue(list,7,6).equals("_")&& x == 7 && y == 6){
+                }else{
+               for(int i=1; i<list.get(7).get(6).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,7,6,i));}//end for
+           };
+           if (checkValue(list,7,7).equals("_")&& x == 7 && y == 7){
+                }else{
+               for(int i=1; i<list.get(7).get(7).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,7,7,i));}//end for
+           };
+           if (checkValue(list,7,8).equals("_")&& x == 7 && y == 8){
+                }else{
+               for(int i=1; i<list.get(7).get(8).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,7,8,i));}//end for
+           };           
+           if (checkValue(list,8,6).equals("_")&& x == 8 && y == 6){
+                }else{
+               for(int i=1; i<list.get(8).get(6).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,8,6,i));}//end for
+           };
+           if (checkValue(list,8,7).equals("_")&& x == 8 && y == 7){
+                }else{
+               for(int i=1; i<list.get(8).get(7).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,8,7,i));}//end for
+           };
+           if (checkValue(list,8,8).equals("_")&& x == 8 && y == 8){
+                }else{
+               for(int i=1; i<list.get(8).get(8).size();i++){
+               HiddenSinglesAL.add(getPossibleValue(list,8,8,i));}//end for
+           };           
+           break;
+       
+           
+   }//end swithc
+    
+   return HiddenSinglesAL;
+    }//end craat gridhiddne singles
+
 //create specific array list i might need
 ArrayList<String> rowList = new ArrayList<>();
 ArrayList<String> colList = new ArrayList<>(); //may not need these
@@ -1784,91 +2241,32 @@ public void checkHiddenSingles(ArrayList<ArrayList<ArrayList<String>>> list, int
     //in that list so the size is 1.
 }
 
-public void checkHiddenSinglesTest(ArrayList<ArrayList<ArrayList<String>>> list, int row, int col,ArrayList<ArrayList<Integer>> gridList,String test,int grid,ArrayList<ArrayList<ArrayList<Integer>>> whichGrid){
-    System.out.println("CheckHiddenSingles");    
+public void checkHiddenSinglesTest(ArrayList<ArrayList<ArrayList<String>>> list, int row, int col,ArrayList<ArrayList<Integer>> gridList,String test,int grid,ArrayList<ArrayList<ArrayList<Integer>>> whichGrid){    
+    if((list.get(row).get(col).get(0)).equals("_")){
     //pick a grid
-    int gridNum=  whichGrid.get(row).get(col).get(0);
-    System.out.print("grid number");
-    System.out.println(Integer.toString(gridNum));
-    ArrayList<ArrayList<String>> singlesList = new ArrayList<>();
-    singlesList = createGridHiddenSingles(list,row,col,gridNum);
-    printHiddensingles(singlesList);
-    System.out.println("after singles creation");
-        //might input row from the for loop in the main method?
-        //naa put this ina for loop to run through rows
-        //need to rewrite this to run for each value check
-        //we check each cell when we check the cell we will pass the location of cell
-        //to method and the method will build the grid array and run the check.
-        //if not found it will use the location to remove the items from the array
-        // and update the index for the value not found 
-        //we can build a holder variable to assign the value to index zero after
-        //we clear the possiblevalues arraylist
-        System.out.println("after singlesList");
+    int gridNum = whichGrid.get(row).get(col).get(0);
+    //generate singles list for the grid specific to x,y
+    ArrayList<String> singlesList = new ArrayList<>();
+    singlesList = createArrayListHiddenSingles(list,row,col,gridNum);
+        for(int p=0; p<singlesList.size();p++){
+        System.out.println("Singles list");
+        System.out.println(singlesList.get(p));}
         String possibleValue =""; 
-        boolean valueIsSingle = true; //this needs to be thought out 
-        for(int i=0; i<9;i++){//run this loop for each row in the array
-    if(singlesList.get(i).size()>0){//if possiblelist is full do it else do nothing
-        for(int k=0; k<singlesList.get(i).size();k++){//so skip first one skipt fits not necessary any more
-        //get first possible value the compare that to each row column and gird
-        //if match remove it 
-        System.out.println("check single start loop");
-        //get possible values manually
-        possibleValue = singlesList.get(i).get(k);
-        valueIsSingle = true;
-        //this true setting statement eneds to be in the loop
-        System.out.println("i "+i);    
-        System.out.println("k "+k);    
-        System.out.println("Possible value "+possibleValue);
-        //if i remove value make sure to decrement so it runs more
-        //if no match update thats index 
-          for(int g=0; g<9;g++){
-              System.out.println("row "+g);
-              if(i==g){//something is wrong with this statement to skip first
-                  //should just do a check for row and remove that row like
-                  //if statement
-                  System.out.println("Continue");
-              continue;}//lets swap i and g 
-             // if(possibleValue.equals(singlesList.get(i).get(g))){
-             //     break;
-          //end/
-                if(singlesList.get(g).contains(possibleValue)){
-                  valueIsSingle = false;
-                  System.out.println("value is single "+ valueIsSingle);
-              }
-                if(g==8 && valueIsSingle == true){//should also prolly break the loop?   
-                    System.out.println("ValueIsSingle WHOOHOOOO");
-                    for(int m=1; m<list.get(row).get(col).size();m++){
-                list.get(row).get(col).remove((list.get(row).get(col).size())-1);
-                }//on final loop if valueissingle is true then set the value and clear possible
-                break;      
+        boolean valueIsSingle = true;
+        for(int i=1; i<list.get(row).get(col).size(); i++){//pick each possible value for x,y
+        possibleValue = getPossibleValue(list,row,col,i);
+        System.out.println("Possible Value");
+        System.out.println(possibleValue);         
+                if(singlesList.contains(possibleValue)){              
+                } else{
+                    list.get(row).get(col).clear();
+                    list.get(row).get(col).add(possibleValue);
+                    System.out.println(list.get(row).get(col).get(0));
+                    i = list.get(row).get(col).size();
                 }
-                //this isnt working
-                //maybe take a value and compare against all other arrays in the array simulteously
-                // take a value check next array if it contains
-                //then check the next and next and next.
-                //once we check all the arrays then we determine if its a single
-                //if its a single then we will update its possible values.s
-              //need for loop for the row im processesing
-            /*  for(int p=0; p<singlesList.get(g).size(); p++){
-                  //if(possibleValue.equals(singlesList.get(g).get(p))){
-                  if(singlesList.get(g).contains(possibleValue)){
-                  System.out.println(singlesList.get(g).get(p));
-                  valueIsSingle = false;
-                  System.out.println("value is single "+ valueIsSingle);
-              }                
-    }     */  
-}
-
-    }
-    }       
-}
-    //then scan all possible values except itself if you find a unique value assign it to
-    //index 0 and then remove all other possibles from that cell
-    //create arrays for all possible values in a specific grid
-    //pick the first value of first array
-    //compare that value to all other values. if no match then set that 
-    //cells possible list index[0] to that check value and drop all other values 
-    //in that list so the size is 1.
+            
+    }    
+    }//endif
 }
 
 static String checkValue(ArrayList<ArrayList<ArrayList<String>>> list, int x, int y){
@@ -1919,6 +2317,20 @@ public void printPossibleArray(ArrayList<ArrayList<ArrayList<String>>> list){
         System.out.print("Next");      
         }
     }   
+}
+
+public boolean isDone(int row, int col,ArrayList<ArrayList<ArrayList<String>>> list){
+    boolean bool = false;
+    
+    for(int i = 0; i<9; i++){
+        for(int j=0; j<9; j++){
+            if(list.get(i).get(j).get(0) == "_"){
+                break;
+            }else if(i==8 && j==8){
+            bool = true;}
+        }//inner for
+    }//outer for
+return bool;
 }
 
 
